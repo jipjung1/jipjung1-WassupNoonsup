@@ -38,4 +38,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.listen(3000, function(){
+  console.log("Port 3000!")
+})
+
 module.exports = app;
