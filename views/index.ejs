@@ -53,6 +53,10 @@
       height: 30px;
     }
 
+    .radio-items{
+      padding-left: 25%;
+    }
+
     </style>
 </head>
 
@@ -101,20 +105,32 @@
 <!--    성별 선택칸, 업로드 버튼 디자인, 이미지와 성별을 어떻게 보낼건지-->
     <div class="col-md-4">
       <article>
+<!--        성별, 이미지를 보내기위한 form-->
+        <form method="post" action="/make_face" enctype="multipart/form-data">
+        <center>
         <div class="descript"><h2>Upload your photo</h2></div>
         <div id="holder">
           <img src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-photography-657116__340.jpg">
         </div>
         <div class="padding1"></div>
-        <p><input type=file></p>
-        <div class="container">
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" value="Male"> Male
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox2" value="Female"> Female
-          </label>
-        </div>
+        <p><input type=file name="photo"/></p>
+        </center>
+<!--        성별 선택 radio 버튼-->
+          <p style="margin-left: 15%;">Select your gender</p>
+          <div style="width: 200px;">
+            <div class="radio-items">
+              <div class="col-6">
+                <input id="a1" class="only-sr checked" type="radio" name="temp1" value="male" checked>
+                <label for="a1">Male</label>
+              </div>
+              <div class="col-6">
+                <input id="a2" class="only-sr" type="radio" name="temp1" value="female">
+                <label for="a2">Female</label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success" style="margin-left: 25%">Submit</button>
+          </div>
+        </form>
       </article>
       <script>
         var upload = document.getElementsByTagName('input')[0],
@@ -143,7 +159,7 @@
         };
 
         function change_img_eyebrow(num) {
-          if(main_num != num){
+          if(main_num_eyebrow != num){
             $("#main_img_eyebrow").attr("src", jQuery('#img' + num + '_eyebrow').attr("src"));
             main_num_eyebrow = num;
           }
@@ -161,6 +177,7 @@
 
 <!--    합성된 눈썹 사진 보여줄 부분-->
     <div class="col-md-4">
+      <center>
       <div class="descript"><h2>Eyebrow Recommendation</h2></div>
       <div><img id="main_img_eyebrow" src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-photography-657116__340.jpg"></div>
       <div class="padding1"></div>
@@ -169,10 +186,12 @@
         <img id="img2_eyebrow" onclick="change_img_eyebrow(2)" src="https://cdn.pixabay.com/photo/2016/01/18/05/09/face-1146038__340.jpg">
         <img id="img3_eyebrow" onclick="change_img_eyebrow(3)" src="https://cdn.pixabay.com/photo/2014/01/03/01/13/girl-237871__340.jpg">
       </div>
+      </center>
     </div>
 
 <!--    합성할 연예인 사진 보여줄 부분-->
     <div class="col-md-4">
+      <center>
       <div class="descript"><h2>A recommended face </h2></div>
       <div><img id="main_img" src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-photography-657116__340.jpg"></div>
       <div class="padding1"></div>
@@ -181,6 +200,7 @@
         <img id="img2" onclick="change_img(2)" src="https://cdn.pixabay.com/photo/2016/01/18/05/09/face-1146038__340.jpg">
         <img id="img3" onclick="change_img(3)" src="https://cdn.pixabay.com/photo/2014/01/03/01/13/girl-237871__340.jpg">
       </div>
+      </center>
     </div>
   </div>
 
