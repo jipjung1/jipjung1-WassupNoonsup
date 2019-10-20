@@ -23,7 +23,7 @@ router.post('/', upload.single('photo'), function (req, res) {
         //여기서 data가 이미지 데이터
         console.log(data);
     });
-    //이미지에서 얼굴 추출, 돌리기
+    //이미지에서 얼굴 추출, 돌리
     //모델 20번 호출해서 결과값 어레이 받기
     //상위 3개만큼 DB에서 뽑기
     //각 사진 눈썹 합성
