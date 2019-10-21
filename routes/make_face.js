@@ -21,7 +21,7 @@ router.post('/', upload.single('photo'), function (req, res) {
     //여기서 이미지랑 성별 받고 변수에 할당
     var gender = req.body['temp1'];
     var uploaded_file_path = req.file['path'];
-    var local_path = 'http://localhost:3000/static/'
+    var local_path = 'http://localhost:3000/static/';
 
     //이미지에서 얼굴 추출, 돌리기, numpy 어레이로 변환 -> 이미지 이름으로 폴더 생성해서 그곳에 저장 / python 파일 폴더에 저장
     //각기 다른 모델 3개 호출하여 결과값 도출 -> 리턴값 list[1번 클래스, 2번 클래스, 3번 클래스] / python 파일
