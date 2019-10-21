@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+module.exports = {
+    HTML:function(customer_photo, eyebrow1, eyebrow2, eyebrow3, celeb1, celeb2, celeb3){
+        return `
+        <!DOCTYPE html>
 <html>
 <head>
   <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -31,6 +34,7 @@
     #photo_list, #photo_list_eyebrow{
       overflow: auto;
       white-space: nowrap;
+      height: 200px;
     }
 
     #img1, #img2{
@@ -55,7 +59,16 @@
     .radio-items{
       padding-left: 25%;
     }
-
+    
+    #main_img, #main_img_eyebrow{
+      max-width: 95%;
+      height: auto;
+    }
+    
+    .img_holder{
+      height: 550px;
+    }
+    
     .btn{
       color: lightyellow;
     }
@@ -77,7 +90,6 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
     </div>
-    <!--/.navbar-collapse -->
   </div>
 </nav>
 
@@ -95,36 +107,15 @@
   <!-- Example row of columns -->
   <div class="row">
 <!--    화면의 3분의 1만 사용-->
-<!--    이미지 업로드 부분-->
-<!--    성별 선택칸, 업로드 버튼 디자인-->
     <div class="col-md-4">
       <article>
-<!--        성별, 이미지를 보내기위한 form-->
-        <form method="post" action="/make_face" enctype="multipart/form-data">
         <center>
-        <div class="descript"><h2>Upload your photo</h2></div>
+        <div class="descript"><h2>Photo you uploaded</h2></div>
         <div id="holder">
-          <img src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-photography-657116__340.jpg">
+            <img src="${customer_photo}">
         </div>
         <div class="padding1"></div>
-        <p><input type=file name="photo"/></p>
         </center>
-<!--        성별 선택 radio 버튼-->
-          <p style="margin-left: 15%;">Select your gender</p>
-          <div style="width: 200px;">
-            <div class="radio-items">
-              <div class="col-6">
-                <input id="a1" class="only-sr checked" type="radio" name="temp1" value="male" checked>
-                <label for="a1">Male</label>
-              </div>
-              <div class="col-6">
-                <input id="a2" class="only-sr" type="radio" name="temp1" value="female">
-                <label for="a2">Female</label>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-success" style="margin-left: 25%">Submit</button>
-          </div>
-        </form>
       </article>
       <script>
         var upload = document.getElementsByTagName('input')[0],
@@ -173,30 +164,31 @@
     <div class="col-md-4">
       <center>
       <div class="descript"><h2>Eyebrow Recommendation</h2></div>
-      <div><img id="main_img_eyebrow" src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-photography-657116__340.jpg"></div>
+      <div class="img_holder"><img id="main_img_eyebrow" src="${eyebrow1}"></div>
       <div class="padding1"></div>
       <div id="photo_list_eyebrow">
-        <img id="img1_eyebrow" onclick="change_img_eyebrow(1)" src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-photography-657116__340.jpg">
-        <img id="img2_eyebrow" onclick="change_img_eyebrow(2)" src="https://cdn.pixabay.com/photo/2016/01/18/05/09/face-1146038__340.jpg">
-        <img id="img3_eyebrow" onclick="change_img_eyebrow(3)" src="https://cdn.pixabay.com/photo/2014/01/03/01/13/girl-237871__340.jpg">
+        <img id="img1_eyebrow" onclick="change_img_eyebrow(1)" src="${eyebrow1}">
+        <img id="img2_eyebrow" onclick="change_img_eyebrow(2)" src="${eyebrow2}">
+        <img id="img3_eyebrow" onclick="change_img_eyebrow(3)" src="${eyebrow3}">
       </div>
       </center>
     </div>
+
 
 <!--    합성할 연예인 사진 보여줄 부분-->
     <div class="col-md-4">
       <center>
       <div class="descript"><h2>A recommended face </h2></div>
-      <div><img id="main_img" src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-photography-657116__340.jpg"></div>
+      <div class="img_holder"><img id="main_img" src="${celeb1}"></div>
       <div class="padding1"></div>
       <div id="photo_list">
-        <img id="img1" onclick="change_img(1)" src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-photography-657116__340.jpg">
-        <img id="img2" onclick="change_img(2)" src="https://cdn.pixabay.com/photo/2016/01/18/05/09/face-1146038__340.jpg">
-        <img id="img3" onclick="change_img(3)" src="https://cdn.pixabay.com/photo/2014/01/03/01/13/girl-237871__340.jpg">
+        <img id="img1" onclick="change_img(1)" src="${celeb1}">
+        <img id="img2" onclick="change_img(2)" src="${celeb2}">
+        <img id="img3" onclick="change_img(3)" src="${celeb3}">
       </div>
       </center>
     </div>
-  </div>
+
   </div>
 
   <hr>
@@ -207,8 +199,10 @@
 </div>
 <!-- /container -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
+        `;
+    }
+};
