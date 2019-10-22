@@ -8,7 +8,9 @@ def make_answer():
     file_path = sys.argv[1]
     gender = sys.argv[2]
     source_image = file_path
-    target_image = 'input_img5.jpg'
+    img_name = file_path.split('\\')[1]
+    img_name_1 = img_name.split('.')[0]
+    target_image = './uploads/' + img_name_1 + '/' + img_name_1 + '_to_numpy.np'
     image = Image.open(source_image)
     resize_image = image.resize((32, 32))
     resize_image.save(target_image, 'JPEG', quality=95)
@@ -16,7 +18,7 @@ def make_answer():
     w = 32
     h = 32
     X = []
-    img = cv2.imread('input_img.jpg')
+    img = cv2.imread(target_image)
     img = cv2.resize(img, None, fx=w/img.shape[0], fy=h/img.shape[1])
     X.append(img/256)
 
