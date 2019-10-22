@@ -25,6 +25,7 @@ router.post('/', upload.single('photo'), function (req, res) {
     var spawnSync = child_process.spawnSync;
 
     //이미지 이름 폴더 없으면 생성, 이미지에서 얼굴 추출, 돌리기 -> 이미지 이름 폴더 저장
+    var align=spawnSync('python',["facealign.py", uploaded_file_path]);
 
     var result = spawnSync('python', ['./return_class.py', uploaded_file_path, gender]);
     //도출된 class값 출력
