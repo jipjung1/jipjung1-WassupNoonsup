@@ -17,6 +17,7 @@
     "multer": "^1.4.2",
     "python": "0.0.4",
     "python-shell": "^1.0.8",
-    "shell": "^0.5.0"
+    "shell": "^0.5.0",
+    "spawn-sync": "^2.0.0"
   }
 }
