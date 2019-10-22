@@ -28,7 +28,6 @@ router.post('/', upload.single('photo'), function (req, res) {
 
     var result = spawnSync('python', ['./return_class.py', uploaded_file_path, gender]);
     //도출된 class값 출력
-    // process.stdout.write(result.stdout);
     var celeb_name = result.stdout.toString();
     celeb_name = celeb_name.split('\n')[0];
     console.log(celeb_name);
