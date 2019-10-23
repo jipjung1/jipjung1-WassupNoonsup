@@ -83,6 +83,7 @@ if __name__ == '__main__':
     # 이미지 읽기 ---⑤
     contour_img = sys.argv[1]
     destination_img = sys.argv[2]
+    num = sys.argv[3]
 
     # 경로 파싱
     img_name = destination_img.split('\\')[1]
@@ -122,4 +123,4 @@ if __name__ == '__main__':
                                cv2.NORMAL_CLONE)
 
     # 합성 사진 저장
-    cv2.imwrite('./uploads/' + folder_name + '/' + folder_name + '_eyebrow.jpg', output)
+    cv2.imwrite('./uploads/' + folder_name + '/' + folder_name + '_eyebrow' + num + '.jpg', output)

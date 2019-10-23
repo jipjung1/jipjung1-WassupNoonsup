@@ -7,6 +7,7 @@ from keras.models import load_model
 def make_answer():
     file_path = sys.argv[1]
     gender = sys.argv[2]
+    num = sys.argv[3]
     source_image = file_path
     img_name = file_path.split('\\')[1]
     img_name_1 = img_name.split('.')[0]
@@ -56,10 +57,23 @@ def make_answer():
     xhat_idx = np.random.choice(X_test.shape[0], 5)
     xhat = X_test[xhat_idx]
 
+    male_model_path = ''
+    female_model_path = ''
+
+    if num == '1':
+        male_model_path = './models/male_rotate_104.h5'
+        female_model_path = './models/female_rotate_111.h5'
+    elif num == '2':
+        male_model_path = './models/male_rotate_change1.h5'
+        female_model_path = './models/female_rotate_change1.h5'
+    elif num == '3':
+        male_model_path = './models/male_rotate_model_3.h5'
+        female_model_path = './models/female_rotate_model_3.h5'
+
     if gender == 'female':
-        model = load_model('./models/female_rotate_111.h5')
+        model = load_model(female_model_path)
     else:
-        model = load_model('./models/male_rotate_104.h5')
+        model = load_model(male_model_path)
 
     yhat = model.predict_classes(xhat)
 
