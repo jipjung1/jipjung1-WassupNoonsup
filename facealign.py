@@ -1,9 +1,10 @@
 import sys
 import dlib
 import cv2
-import openface.openface.align_dlib as openface 
+import align_dlib as openface
 import os
 import numpy as np
+
 
 def imread(filename, flags=cv2.IMREAD_COLOR, dtype=np.uint8): 
     try: 
@@ -38,6 +39,8 @@ face_aligner = openface.AlignDlib(predictor_model)
 
 # Take the image file name from the command line
 file_name = sys.argv[1]
+img_name = file_name.split('\\')[1]
+img_name_1 = img_name.split('.')[0]
 
 #파일저장명
 alignfile=os.path.split(file_name)
@@ -51,14 +54,15 @@ folder_path=file_path[1]
 # Load the image
 image = imread(file_name)
 
+#resize the img
+resized_img = cv2.resize(image, (300, 400), interpolation=cv2.INTER_AREA)
+imwrite('./uploads/' + img_name_1 + '_1.jpg', resized_img)
+
 # Run the HOG face detector on the image data
 detected_faces = face_detector(image, 1)
 
-#print("Found {} faces in the image file {}".format(len(detected_faces), file_name))
-
 # Loop through each face we found in the image
 for i, face_rect in enumerate(detected_faces):
-   # print("- Face #{} found at Left: {} Top: {} Right: {} Bottom: {}".format(i, face_rect.left(), face_rect.top(), face_rect.right(), face_rect.bottom()))
     # Get the the face's pose
     pose_landmarks = face_pose_predictor(image, face_rect)
     # Use openface to calculate and perform the face alignment

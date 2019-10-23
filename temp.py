@@ -3,7 +3,6 @@ import numpy as np
 import cv2
 
 
-
 # file_path = sys.argv[1]
 file_path = './uploads/111.jpg'
 source_image = file_path
@@ -15,7 +14,7 @@ resize_image.save(target_image, 'JPEG', quality=95)
 w = 32
 h = 32
 X = []
-img = cv2.imread('input_img.jpg')
+img = cv2.imread('input_img3.jpg')
 img = cv2.resize(img, None, fx=w/img.shape[0], fy=h/img.shape[1])
 X.append(img/256)
 

@@ -60,13 +60,22 @@ module.exports = {
       padding-left: 25%;
     }
     
-    #main_img, #main_img_eyebrow{
+    #custom_id, #main_img_eyebrow{
+      max-width: 95%;
+      height: 450px;
+    }
+    
+    #main_img{
       max-width: 95%;
       height: auto;
     }
     
+    .holder{
+      height: 450px;
+    }
+    
     .img_holder{
-      height: 550px;
+      height: 450px;
     }
     
     .btn{
@@ -112,7 +121,7 @@ module.exports = {
         <center>
         <div class="descript"><h2>Photo you uploaded</h2></div>
         <div id="holder">
-            <img src="${customer_photo}">
+            <img id="custom_id" src="${customer_photo}">
         </div>
         <div class="padding1"></div>
         </center>
